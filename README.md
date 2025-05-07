@@ -4,18 +4,18 @@ Learning Urdu’s Arabic script or Hindi's Devanagari script is tough—especial
 
 ![Hindi-Urdu Alphabet](Hindi-Urdu%20Alphabet.png)
 
-<h2>Typing Guide</h2>
+## Typing Guide
 
 [](urdu_dvorak/source/help/hindi_urdu_alphabet.png)
 
-<h2>Desktop Keyboard Layout</h2>
+## Desktop Keyboard Layout
 
 ![Keyboard](urdu_dvorak/source/help/typing_layout.png)
 ![Keyboard (Shift)](urdu_dvorak/source/help/typing_layout_shift.png)
 ![Keyboard (Alt)](urdu_dvorak/source/help/typing_layout_alt.png)
 ![Keyboard (Alt-Shift)](urdu_dvorak/source/help/typing_layout_altshift.png)
 
-<h2>Mobile Desktop Layout</h2>
+## Mobile Desktop Layout
 
 ![Mobile Keyboard](urdu_dvorak/source/help/mobile_layout.png)
 ![Mobile Keyboard (Shift)](urdu_dvorak/source/help/mobile_shift_layout.png)
