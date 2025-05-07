@@ -3,7 +3,7 @@
   "name": "Hindi-Urdu to Custom Latin Converter",
   "version": "1.0",
   "description": "Convert Hindi/Urdu text to custom Latin script.",
-  "permissions": ["contextMenus", "activeTab"],
+  "permissions": ["contextMenus", "activeTab", "<all_urls>"],
   "background": {
     "scripts": ["background.js"]
   },
@@ -25,19 +25,4 @@
       "run_at": "document_end"
     }
   ]
-}
-async function handleText(textNode, apiKey) {
-    const text = textNode.nodeValue;
-    const script = detectScript(text);
-    if (!script) return;
-    console.log("Detected script:", script, "Text:", text);
-    try {
-        const converted = await convertWithZhupi(text, apiKey, script);
-        if (converted !== text) {
-            textNode.nodeValue = converted;
-            console.log("Converted:", converted);
-        }
-    } catch (e) {
-        console.error("Conversion failed:", e);
-    }
 }
