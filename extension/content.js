@@ -55,10 +55,14 @@ async function handleText(textNode, apiKey) {
     const text = textNode.nodeValue;
     const script = detectScript(text);
     if (!script) return;
-    const converted = await convertWithZhupi(text, apiKey, script);
-    if (converted !== text) {
-        textNode.nodeValue = converted;
-    }
+    chrome.runtime.sendMessage(
+        { action: "convert", text, script },
+        function(response) {
+            if (response && response.converted) {
+                textNode.nodeValue = response.converted;
+            }
+        }
+    );
 }
 
 // Main entry

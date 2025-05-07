@@ -26,3 +26,18 @@
     }
   ]
 }
+async function handleText(textNode, apiKey) {
+    const text = textNode.nodeValue;
+    const script = detectScript(text);
+    if (!script) return;
+    console.log("Detected script:", script, "Text:", text);
+    try {
+        const converted = await convertWithZhupi(text, apiKey, script);
+        if (converted !== text) {
+            textNode.nodeValue = converted;
+            console.log("Converted:", converted);
+        }
+    } catch (e) {
+        console.error("Conversion failed:", e);
+    }
+}

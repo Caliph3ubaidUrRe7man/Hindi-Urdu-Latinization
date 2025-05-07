@@ -14,3 +14,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         });
     }
 });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action === "convert") {
+        // Call Zhupi API here (using fetch)
+        // sendResponse({ converted: ... });
+    }
+    return true; // Needed for async response
+});
