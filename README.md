@@ -4,6 +4,25 @@ Learning Urdu’s Arabic script or Hindi's Devanagari script is tough—especial
 
 ![Hindi-Urdu Alphabet](Hindi-Urdu%20Alphabet.png)
 
+<h2>Typing Guide</h2>
+
+[](urdu_dvorak/source/help/hindi_urdu_alphabet.png)
+
+<h2>Desktop Keyboard Layout</h2>
+
+![Keyboard](urdu_dvorak/source/help/typing_layout.png)
+![Keyboard (Shift)](urdu_dvorak/source/help/typing_layout_shift.png)
+![Keyboard (Alt)](urdu_dvorak/source/help/typing_layout_alt.png)
+![Keyboard (Alt-Shift)](urdu_dvorak/source/help/typing_layout_altshift.png)
+
+<h2>Mobile Desktop Layout</h2>
+
+![Mobile Keyboard](urdu_dvorak/source/help/mobile_layout.png)
+![Mobile Keyboard (Shift)](urdu_dvorak/source/help/mobile_shift_layout.png)
+![Mobile Keyboard (Numbers](urdu_dvorak/source/help/mobile_numbers_layout.png)
+![Mobile Keyboard (Symbols)](urdu_dvorak/source/help/mobile_symbols_layout.png)
+
+
 This System Fixes That:
 
     Uses IPA symbols for tricky sounds (e.g., ʈ for ٹ, ɖ for ڈ).
