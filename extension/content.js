@@ -1,7 +1,8 @@
+// Hardcoded Zhupi BigModel API key (for demo/testing only)
+const ZHUPI_API_KEY = "2fd9d0a0ce7647819ba69c86ed83f2ee.erwqGJiOQvNIupnV";
+
 // Helper: Detect if text is mostly Hindi or Urdu
 function detectScript(text) {
-    // Hindi: Devanagari Unicode range \u0900-\u097F
-    // Urdu: Arabic Unicode range \u0600-\u06FF
     const devanagari = /[\u0900-\u097F]/;
     const arabic = /[\u0600-\u06FF]/;
     if (devanagari.test(text)) return 'devanagari';
@@ -9,8 +10,29 @@ function detectScript(text) {
     return null;
 }
 
+// Call Zhupi BigModel API
+async function convertWithZhupi(text, apiKey, script) {
+    // Replace with the actual endpoint and payload format
+    const endpoint = "https://api.zhupi.com/v1/bigmodel/convert";
+    const payload = {
+        text: text,
+        script: script // 'devanagari' or 'arabic'
+    };
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(payload)
+    });
+    if (!response.ok) return text;
+    const data = await response.json();
+    return data.converted_text || text;
+}
+
 // Recursively walk the DOM and replace text nodes
-function walk(node) {
+async function walk(node, apiKey) {
     let child, next;
     switch (node.nodeType) {
         case 1: // Element
@@ -19,26 +41,27 @@ function walk(node) {
             child = node.firstChild;
             while (child) {
                 next = child.nextSibling;
-                walk(child);
+                await walk(child, apiKey);
                 child = next;
             }
             break;
         case 3: // Text node
-            handleText(node);
+            await handleText(node, apiKey);
             break;
     }
 }
 
-function handleText(textNode) {
+async function handleText(textNode, apiKey) {
     const text = textNode.nodeValue;
     const script = detectScript(text);
     if (!script) return;
-    let mapping = script === 'devanagari' ? devanagariToCustom : arabicToCustom;
-    const converted = convertText(text, mapping);
+    const converted = await convertWithZhupi(text, apiKey, script);
     if (converted !== text) {
         textNode.nodeValue = converted;
     }
 }
 
-// Start processing after DOM is ready
-walk(document.body);
+// Main entry
+(async function() {
+    await walk(document.body, ZHUPI_API_KEY);
+})();
